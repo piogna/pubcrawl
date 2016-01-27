@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-8 col-lg-offset-2">
+    <div class="col-lg-10 col-lg-offset-1">
       <h1>Something About Pub Crawls</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur viverra, sapien eget consectetur tempor, nulla tortor semper sapien, vitae consequat neque enim sit amet elit. Morbi hendrerit elementum metus, a aliquet purus tincidunt sit amet. Mauris cursus urna eget quam ultrices interdum. Proin quis volutpat velit. Duis in risus fermentum, tempor nulla vel, rhoncus est. Aliquam erat volutpat. Fusce bibendum a dolor at semper. Nullam ut sem eu dolor dapibus rhoncus. Aenean lacus diam, euismod nec tincidunt et, rutrum nec nisl. Ut vel consequat dui, sit amet ultricies dolor. Phasellus pellentesque feugiat sapien, in luctus est cursus et. Integer blandit.</p>
     </div>
@@ -11,7 +11,6 @@
 <% @crawls.each do |crawl| %>
   <div>
     <h3><%= crawl.name %></h3>
-<!--       <h4><%= crawl.start_address %></h4> -->
     <a class="btn btn-default" href="/crawl/<%= crawl.id %>">Details</a>
   </div>
   <hr/>
