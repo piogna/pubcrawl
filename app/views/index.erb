@@ -10,16 +10,15 @@
 </div>
 <hr/>
 <% @crawls.each do |crawl| %>
-  <div>
+  <div class="row">
     <h3><%= crawl.name %></h3>
-    <!--       <h4><%= crawl.start_address %></h4> -->
     <a class="btn btn-default" href="/crawl/<%= crawl.id %>">Details</a>
   </div>
   <hr/>
 <% end %>
 <script type="text/javascript">
   var map;
-  
+
   function initMap(coords) {
   var mapDiv = document.getElementById('map');
     map = new google.maps.Map(mapDiv, {
@@ -31,16 +30,16 @@
     });
     centerMap()
   }
-  
+
   function centerMap() {
     var geolocation = null;
-  
+
     if (window.navigator && window.navigator.geolocation) {
         geolocation = window.navigator.geolocation;
     }
-  
+
     if (geolocation) {
-  
+
         geolocation.getCurrentPosition(
             function(position) {
                 latLng = new google.maps.LatLng({
