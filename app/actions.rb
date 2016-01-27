@@ -9,6 +9,10 @@ end
 # end
 
 get '/crawl/new' do
+  @crawl = Crawl.new
+  @bar1 = Bar.new
+  @bar2 = Bar.new
+  @bar3 = Bar.new
   erb :'crawl/new'
 end
 

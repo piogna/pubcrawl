@@ -1,22 +1,25 @@
 <div class="row">
   <div class="col-lg-12">
-    <h1>Create new crawl</h1>
+    <h2>Add a bar to crawl (get name of crawl)</h2>
 
-    <form method="post" action="/songs">
+    <form method="post" action="/crawl/new">
+
       <div class="form-group">
-        <label>Artist</label>
-        <input type="text" class="form-control" name="author" value="<%= @song.author %>" placeholder="Artist">
+        <label>Bar Name</label>
+        <input type="text" class="form-control" name="name" value="<%= @bar1.name %>" placeholder="Bar #1 - Name">
       </div>
       <div class="form-group">
-        <label>Song Title</label>
-        <input type="text" class="form-control" name="title" value="<%= @song.title %>" placeholder="Song Title">
+        <label>Address</label>
+        <input type="text" class="form-control" name="address" value="<%= @bar1.address %>" placeholder="Street Address">
       </div>
       <div class="form-group">
-        <label>Link</label>
-        <input type="text" class="form-control" name="url" value="<%= @song.url %>" placeholder="website url">
+        <label>City</label>
+        <input type="text" class="form-control" name="address" value="<%= @bar1.city %>" placeholder="City">
       </div>
+      <br/>
+
       <div>
-        <input class="btn btn-default" type="submit" value="Post!">
+        <input class="btn btn-default" type="submit" value="Create new crawl!">
       </div>
     </form>
 
