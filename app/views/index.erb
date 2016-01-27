@@ -1,10 +1,27 @@
-<h1>Home Page</h1>
-<div id="map"></div>
+<div class="row">
+  <div id="map"></div>
+</div>
+</div>
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
+    <h1>Something About Pub Crawls</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur viverra, sapien eget consectetur tempor, nulla tortor semper sapien, vitae consequat neque enim sit amet elit. Morbi hendrerit elementum metus, a aliquet purus tincidunt sit amet. Mauris cursus urna eget quam ultrices interdum. Proin quis volutpat velit. Duis in risus fermentum, tempor nulla vel, rhoncus est. Aliquam erat volutpat. Fusce bibendum a dolor at semper. Nullam ut sem eu dolor dapibus rhoncus. Aenean lacus diam, euismod nec tincidunt et, rutrum nec nisl. Ut vel consequat dui, sit amet ultricies dolor. Phasellus pellentesque feugiat sapien, in luctus est cursus et. Integer blandit.</p>
+  </div>
+</div>
+<hr/>
+<% @crawls.each do |crawl| %>
+  <div>
+    <h3><%= crawl.name %></h3>
+    <!--       <h4><%= crawl.start_address %></h4> -->
+    <a class="btn btn-default" href="/crawl/<%= crawl.id %>">Details</a>
+  </div>
+  <hr/>
+<% end %>
 <script type="text/javascript">
-var map;
-
-function initMap(coords) {
-    var mapDiv = document.getElementById('map');
+  var map;
+  
+  function initMap(coords) {
+  var mapDiv = document.getElementById('map');
     map = new google.maps.Map(mapDiv, {
         center: {
             lat: 43.656288,
@@ -13,22 +30,19 @@ function initMap(coords) {
         zoom: 14
     });
     centerMap()
-}
-
-function centerMap() {
+  }
+  
+  function centerMap() {
     var geolocation = null;
-
+  
     if (window.navigator && window.navigator.geolocation) {
         geolocation = window.navigator.geolocation;
     }
-
+  
     if (geolocation) {
-
+  
         geolocation.getCurrentPosition(
             function(position) {
-                // mapCoords = [];
-                // mapCoords.push(position.coords.latitude);
-                // mapCoords.push(position.coords.longitude);
                 latLng = new google.maps.LatLng({
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
@@ -37,6 +51,6 @@ function centerMap() {
             }
         );
     }
-}
+  }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
