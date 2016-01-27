@@ -6,6 +6,5 @@ class Crawl < ActiveRecord::Base
   validates :address, presence: true
   validates :city, presence: true
   validates :postal_code, presence: true
-  validates :crawl_position, presence: true
 
 end
