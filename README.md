@@ -1,7 +1,9 @@
-Sinatra
+Pubcrawl-Midterm
 =============
 
-Brought to you by Lighthouse Labs
+Pubcrawl app.
+
+Sinatra Midterm Project.
 
 ## Getting Started
 
