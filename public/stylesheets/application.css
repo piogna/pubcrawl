@@ -4,6 +4,7 @@ p {
 }
 
 #map {
+    /*changed from 66% width*/
     width: 100%;
     height: 400px;
     margin: 0 auto;
@@ -11,4 +12,9 @@ p {
 
 #crawl-bars {
   display: inline-block;
+}
+
+.jumbotron {
+  margin-top: 60px;
+  padding: 0;
 }
