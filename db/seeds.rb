@@ -1,11 +1,13 @@
 require 'faker'
 
 crawl_1 = Crawl.create!(
-  name: "Cool Crawl"
+  name: "Cool Crawl",
+  description: "Coolest crawl evah"
 )
 
 crawl_2 = Crawl.create!(
-  name: "Sick Crawl"
+  name: "Sick Crawl",
+  description: "drink till you spew!"
 )
 
 bar_1 = Bar.create!(
