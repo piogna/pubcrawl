@@ -42,7 +42,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel"></h4>
+              <h4 class="modal-title" id="myModalLabel">Create new crawl</h4>
             </div>
             <div class="modal-body">
               <!-- form 'end' in separte div to move button -->
@@ -81,13 +81,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home<span class="sr-only">(current)</span></a></li>
+            <li><a href="/">Home<span class="sr-only">(current)</span></a></li>
+            <li data-toggle="modal" data-target="#myModal"><a href="#">Create new crawl<span class="sr-only">(current)</span></a></li>
           </ul>
-
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-            Create new crawl
-          </button>
 
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -99,6 +95,7 @@
       </div>
       <!-- /.container-fluid -->
     </nav>
+
     <!--     <div class="jumbotron">
       <div class="row">
         <div id="map" class="col-lg-12"></div>
