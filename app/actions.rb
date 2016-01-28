@@ -29,6 +29,8 @@ get '/crawl/:id/add_bar' do
 end
 
 post '/crawl/:id/add_bar' do
+  puts "something something something"
+  puts params.inspect
   @crawl = Crawl.find(params[:id])
   @bar = Bar.new(
     name:     params[:name],
@@ -37,5 +39,9 @@ post '/crawl/:id/add_bar' do
     crawl_id: @crawl.id
   )
   @bar.save
-  redirect "/crawl/#{@crawl.id}/add_bar"
+  if params[:add_bar]
+    redirect "/crawl/#{@crawl.id}/add_bar"
+  elsif params[:done]
+    redirect "/crawl/#{@crawl.id}"
+  end
 end

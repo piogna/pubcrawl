@@ -11,21 +11,28 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
 }
 
+nav {
+  padding-top: 5px;
+}
+
+#top-pad {
+  padding-top: 60px;
+}
+
 #map {
-    /*changed from 66% width*/
-    width: 100%;
-    height: 400px;
-    margin: 0 auto;
+  width: 100%;
+  height: 400px;
+  margin: 0 auto;
 }
 
 #crawl-bars {
   display: inline-block;
 }
 
-.jumbotron {
+/*.jumbotron {
   margin-top: 60px;
   padding: 0;
-}
+}*/
 
 .table th, td {
   text-align: center;
@@ -33,4 +40,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-info {
   background-color: #ffffff;
+}
+
+.wrapper {
+  padding: 50px;
 }

@@ -32,6 +32,7 @@
         <br/>
         <div>
           <input class="btn btn-default" type="submit" value="Add bar!">
+          <input class="btn btn-info" type="submit" value="Done" name="done">
         </div>
       </form>
     </div>
@@ -71,17 +72,23 @@
       markers.push(marker);
     <% end %>
   }
-  
+
   function centerMap() {
     latLng = new google.maps.LatLng({
         lat: <%= @crawl.bars.any? ? @crawl.bars.first.latitude : 43.656288 %>,
         lng: <%= @crawl.bars.any? ? @crawl.bars.first.longitude : -79.380905 %>
     });
     map.panTo(latLng);
-  
-  
-  
+
+
+
   }
+</script>
+<script>
+  $(document).ready(function(){
+
+
+  });
 </script>
 <% if @crawl.bars.any? %>
   <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
