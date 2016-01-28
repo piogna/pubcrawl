@@ -5,9 +5,12 @@ get '/' do
 end
 
 get '/crawl/:id' do
-  erb :'crawl/:id'
+  @crawl = Crawl.find_by(id: params[:id])
+  @bars = Bar.where(crawl_id: params[:id]).order(crawl_position: :asc)
+  #could also be done with @crawl.bars.each
+  #using @bars to implement order_by crawl_position
+  erb :'crawl/show'
 end
-
 
 post '/crawl/new' do
   @crawl = Crawl.new(

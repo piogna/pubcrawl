@@ -5,21 +5,18 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-lg-8 col-lg-offset-2">
-      <h1 class="text-center text-uppercase"><mark>Something About Pub Crawls</mark></h1>
-      <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur viverra, sapien eget consectetur tempor, nulla tortor semper sapien, vitae consequat neque enim sit amet elit. Morbi hendrerit elementum metus, a aliquet purus tincidunt sit amet. Mauris cursus urna eget quam ultrices interdum. Proin quis volutpat velit. Duis in risus fermentum, tempor nulla vel, rhoncus est. Aliquam erat volutpat. Fusce bibendum a dolor at semper. Nullam ut sem eu dolor dapibus rhoncus. Aenean lacus diam, euismod nec tincidunt et, rutrum nec nisl. Ut vel consequat dui, sit amet ultricies dolor. Phasellus pellentesque feugiat sapien, in luctus est cursus et. Integer blandit.</p>
+    <h1><%= @crawl.name %></h1>
+    <hr/>
+    <div>
+      <% @bars.each do |bar| %>
+        <h3><%= bar.name %></h3>
+        <p><%= bar.address %></p>
+        <p><%= bar.city %></p>
+      <hr/>
     </div>
+    <% end %>
   </div>
-  <hr/>
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2">
-      <% @crawls.each do |crawl| %>
-        <h3><%= crawl.name %></h3>
-        <a class="btn btn-default" href="/crawl/<%= crawl.id %>">Details</a>
-        <hr/>
-      <% end %>
-    </div>
-  </div>
+
   <script type="text/javascript">
     var map;
 
@@ -57,4 +54,4 @@
     }
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
-  </div>
+</div>
