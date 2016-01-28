@@ -1,5 +1,3 @@
-require 'net/http'
-require 'json'
 # Homepage (Root path)
 get '/' do
   @crawls = Crawl.all.order(:name)
@@ -38,13 +36,6 @@ post '/crawl/:id/add_bar' do
     city:     params[:city],
     crawl_id: @crawl.id
   )
-  uri_string = "https://maps.googleapis.com/maps/api/geocode/json?address=#{@bar.address},#{@bar.city}&key=AIzaSyBX6s8EgaN-Pv8axPpoZvHYY4xL4fRHnck"
-  uri_string.gsub!(" ", "+")
-  uri = URI(uri_string)
-  response = Net::HTTP.get uri
-  location = JSON.parse response
-  @bar.latitude = location["results"][0]["geometry"]["location"]["lat"].to_s
-  @bar.longitude = location["results"][0]["geometry"]["location"]["lng"].to_s
   @bar.save
   redirect "/crawl/#{@crawl.id}/add_bar"
 end
