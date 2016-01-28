@@ -13,11 +13,19 @@
   <hr/>
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2">
-      <% @crawls.each do |crawl| %>
-        <h3><%= crawl.name %></h3>
-        <a class="btn btn-default" href="/crawl/<%= crawl.id %>">Details</a>
-        <hr/>
-      <% end %>
+      <table class="table table-hover">
+        <th><h3>Name</h3></th>
+        <th><h3>Start Address</h3></th>
+        <th><h3>More Info</h3></th>
+        <% @crawls.each do |crawl| %>
+          <tr>
+            <td><h4><%= crawl.name %></h4></td>
+            <td><p><%=  crawl.bars.first.address if crawl.bars.first %></p></td>
+            <td><a href="/crawl/<%= crawl.id %>" class="btn btn-info" role="button">Details</a>
+            </td>
+          </tr>
+        <% end %>
+      </table>
     </div>
   </div>
   <script type="text/javascript">
