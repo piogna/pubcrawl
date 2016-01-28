@@ -30,7 +30,8 @@
   </head>
   <body>
 
-    <!-- Modal -->
+
+    <!-- CREATE NEW CRAWL Modal -->
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -42,7 +43,7 @@
               <!-- form 'end' in separte div to move button -->
               <form method="post" action="/crawl/new">
                 <div class="form-group">
-                  <input type="text" class="form-control" name="name" placeholder="New crawl name">
+                  <input type="text" class="form-control" name="name" placeholder="New crawl name (required)">
                 </div>
                 <div class="form-group">
                   <input type="text" class="form-control" name="description" placeholder="Crawl description (optional)">
@@ -56,6 +57,7 @@
           </div>
         </div>
       </div>
+
 
     <!-- had to get rid of universal container to implement jumbotron -->
     <!-- changed navbar to fixed-top -->

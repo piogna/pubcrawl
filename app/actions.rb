@@ -14,8 +14,9 @@ end
 
 post '/crawl/new' do
   @crawl = Crawl.new(
-    name: params[:name]
-    )
+    name: params[:name],
+    description: params[:description]
+  )
   @crawl.save
   redirect "/crawl/#{@crawl.id}/add_bar"
 end
