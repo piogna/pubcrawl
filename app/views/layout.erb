@@ -23,10 +23,40 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
     <script src="/javascript/application.js"></script>
     <title></title>
   </head>
   <body>
+
+    <!-- CREATE NEW CRAWL Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+              <!-- form 'end' in separte div to move button -->
+              <form method="post" action="/crawl/new">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="name" placeholder="New crawl name (required)">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="description" placeholder="Crawl description (optional)">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-default" value="Create new crawl">
+              </form>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
     <!-- had to get rid of universal container to implement jumbotron -->
     <!-- changed navbar to fixed-top -->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -46,12 +76,12 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home<span class="sr-only">(current)</span></a></li>
           </ul>
-          <form class="navbar-form navbar-left" method="post" action="/crawl/new">
-            <div class="form-group">
-              <input type="text" class="form-control" name="name" placeholder="New crawl name">
-            </div>
-            <input type="submit" class="btn btn-default" value="Create new crawl">
-          </form>
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+            Create new crawl
+          </button>
+
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
