@@ -43,7 +43,6 @@ post '/crawl/:id/add_bar' do
   location = JSON.parse response
   @bar.latitude = location["results"][0]["geometry"]["location"]["lat"].to_s
   @bar.longitude = location["results"][0]["geometry"]["location"]["lng"].to_s
-  puts @bar.inspect
   @bar.save
   redirect "/crawl/#{@crawl.id}/add_bar"
 end
