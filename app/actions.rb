@@ -45,3 +45,12 @@ post '/crawl/:id/add_bar' do
     redirect "/crawl/#{@crawl.id}"
   end
 end
+
+get '/crawl/:crawl_id/bar/:id' do
+  @bar = Bar.find(params[:id])
+
+  erb :'crawl/drinks'
+end
+
+
+

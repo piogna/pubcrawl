@@ -22,12 +22,14 @@
           <th><h3>Name</h3></th>
           <th><h3>Address</h3></th>
           <th><h3>City</h3></th>
+          <th></th>
           <% @bars.each_with_index do |bar, index| %>
             <tr>
               <td><h4><%= "#{index + 1}. " %></h4></td>
               <td><h4><%= bar.name %></h4></td>
               <td><p><%=  bar.address %></p></td>
               <td><p><%=  bar.city %></p></td>
+              <td><a href="/crawl/<%= bar.crawl_id %>/bar/<%= bar.id %>" class="btn btn-info" role="button">Bar Details</a></td>
             </tr>
           <% end %>
         </table>
