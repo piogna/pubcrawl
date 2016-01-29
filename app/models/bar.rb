@@ -17,6 +17,5 @@ class Bar < ActiveRecord::Base
     location = JSON.parse response
     self.latitude = location["results"][0]["geometry"]["location"]["lat"].to_s
     self.longitude = location["results"][0]["geometry"]["location"]["lng"].to_s
-    puts self
   end
 end

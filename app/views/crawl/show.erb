@@ -18,11 +18,13 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2">
         <table class="table table-hover">
+          <th></th>
           <th><h3>Name</h3></th>
           <th><h3>Address</h3></th>
           <th><h3>City</h3></th>
-          <% @bars.each do |bar| %>
+          <% @bars.each_with_index do |bar, index| %>
             <tr>
+              <td><h4><%= "#{index + 1}. " %></h4></td>
               <td><h4><%= bar.name %></h4></td>
               <td><p><%=  bar.address %></p></td>
               <td><p><%=  bar.city %></p></td>
