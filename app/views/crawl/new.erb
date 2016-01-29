@@ -74,7 +74,7 @@
       markers.push(marker);
     <% end %>
   }
-  
+
   function centerMap() {
     latLng = new google.maps.LatLng({
         lat: <%= @crawl.bars.any? ? @crawl.bars.first.latitude : 43.656288 %>,

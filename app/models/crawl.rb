@@ -4,4 +4,8 @@ class Crawl < ActiveRecord::Base
 
   validates :name, presence: true
 
+  def first_bar_coords
+    bar = bars.first
+    {lat: bar.latitude, lng: bar.longitude}
+  end
 end
