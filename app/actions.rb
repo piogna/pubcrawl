@@ -50,6 +50,7 @@ post '/crawl/:id/add_bar' do
     name:     params[:name],
     address:  params[:address],
     city:     params[:city],
+    url:      params[:url],
     crawl_id: @crawl.id
   )
   @bar.save

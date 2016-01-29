@@ -5,11 +5,13 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2">
       <h1><mark><%= @bar.name %></mark></h1>
-      <p><%= @bar.address %>, <%= @bar.city %></p>
+      <p><%= @bar.address %>, <%= @bar.city %>
+      <br><a href="<%= @bar.url %>" target="_blank"><%= @bar.url if @bar.url %></a></p>
+
       <h4>From "<%= @bar.crawl.name %>"</h4>
       <br>
 
-      <% if @bar.drinks %>
+      <% if !@bar.drinks.empty? %>
         <h4>Drinks we had at <%= @bar.name%> </h4>
         <table class="table table-hover">
           <th></th>
