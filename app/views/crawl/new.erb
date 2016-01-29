@@ -1,0 +1,88 @@
+<br/>
+<br/>
+<br/>
+<% if @crawl.bars.any? %>
+  <div id="map" class="col-lg-12"></div>
+<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1><%= @crawl.name %></h1>
+      <h3>Crawl deets: <%= @crawl.description unless @crawl.description.nil? %></h3>
+      <% if !@crawl.bars.empty? %>
+        <h3>Bars already added:</h3>
+        <% @crawl.bars.each do |bar| %>
+          <p><%= bar.name %> </p>
+          <p><%= bar.address %>, <%= bar.city %></p>
+          <br/>
+        <% end %>
+      <% end %>
+      <h4>Add a bar</h4>
+      <form method="post" action="/crawl/<%= @crawl.id %>/add_bar">
+        <div class="form-group">
+          <label>Bar Name</label>
+          <input type="text" class="form-control" name="name" value="<%= @bar.name %>" placeholder="Bar Name">
+        </div>
+        <div class="form-group">
+          <label>Address</label>
+          <input type="text" class="form-control" name="address" value="<%= @bar.address %>" placeholder="Street Address">
+        </div>
+        <div class="form-group">
+          <label>City</label>
+          <input type="text" class="form-control" name="city" value="<%= @bar.city %>" placeholder="City">
+        </div>
+        <br/>
+        <div>
+          <input class="btn btn-default" type="submit" value="Add bar!">
+          <input class="btn btn-info" type="submit" value="Done" name="done">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<hr/>
+<script type="text/javascript">
+  var map;
+  function initMap() {
+  var mapDiv = document.getElementById('map');
+  var infowindow = new google.maps.InfoWindow();
+    map = new google.maps.Map(mapDiv, {
+        center: {
+            lat: 43.656288,
+            lng: -79.380905
+        },
+        zoom: 14
+    });
+    centerMap()
+    var markers = []
+    <% @crawl.bars.each do |bar| %>
+      latLng = new google.maps.LatLng({
+                    lat: <%= bar.latitude %>,
+                    lng: <%= bar.longitude %>
+                });
+      var marker = new google.maps.Marker({
+          position: latLng,
+          map: map,
+          title: '<% bar.name %>'
+      })
+      google.maps.event.addListener(marker, 'click', function(content) {
+        return function(){
+          infowindow.setContent(content);//set the content
+          infowindow.open(map,this);
+        }
+      }("<a href='#'><%= bar.name %></a>"));
+      markers.push(marker);
+    <% end %>
+  }
+  
+  function centerMap() {
+    latLng = new google.maps.LatLng({
+        lat: <%= @crawl.bars.any? ? @crawl.bars.first.latitude : 43.656288 %>,
+        lng: <%= @crawl.bars.any? ? @crawl.bars.first.longitude : -79.380905 %>
+    });
+    map.panTo(latLng);
+  }
+</script>
+<% if @crawl.bars.any? %>
+  <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+<% end %>
