@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 20160129165812) do
   add_index "crawls", ["user_id"], name: "index_crawls_on_user_id"
 
   create_table "drinks", force: :cascade do |t|
-    t.integer  "bars_id"
+    t.integer  "bar_id"
     t.string   "name"
-    t.string   "type"
+    t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

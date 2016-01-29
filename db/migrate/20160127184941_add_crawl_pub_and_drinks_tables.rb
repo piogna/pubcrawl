@@ -20,9 +20,9 @@ class AddCrawlPubAndDrinksTables < ActiveRecord::Migration
     end
 
     create_table :drinks do |t|
-      t.references    :bars
+      t.references    :bar
       t.string        :name
-      t.string        :type
+      t.string        :category
 
       t.timestamps
     end

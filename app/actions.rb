@@ -1,3 +1,19 @@
+helpers do
+
+  def current_user
+    session["user_id"]
+  end
+
+  def user_authenticated?
+    session["user_id"] && User.find_by(id: session["user_id"])
+  end
+
+  def redirect_if_not_authenticated
+    redirect '/sessions/login' unless user_authenticated?
+  end
+
+end
+
 # Homepage (Root path)
 get '/' do
   @crawls = Crawl.all.order(:name)
@@ -29,8 +45,6 @@ get '/crawl/:id/add_bar' do
 end
 
 post '/crawl/:id/add_bar' do
-  puts "something something something"
-  puts params.inspect
   @crawl = Crawl.find(params[:id])
   @bar = Bar.new(
     name:     params[:name],
@@ -88,18 +102,27 @@ post '/sessions/register' do
   end
 end
 
-helpers do
+get '/crawl/:crawl_id/bar/:id' do
+  @bar = Bar.find(params[:id])
+  @drink = Drink.new
 
-  def current_user
-    session["user_id"]
-  end
+  erb :'crawl/bar'
+end
 
-  def user_authenticated?
-    session["user_id"] && User.find_by(id: session["user_id"])
-  end
-
-  def redirect_if_not_authenticated
-    redirect '/sessions/login' unless user_authenticated?
+post '/crawl/:crawl_id/bar/:id/add_drink' do
+  @bar = Bar.find(params[:id])
+  @drink = Drink.new(
+    name:         params[:name],
+    category:     params[:category],
+    bar_id:       @bar.id
+  )
+  @drink.save
+  if params[:add_drink]
+    redirect "/crawl/:crawl_id/bar/#{@bar.id}"
+  elsif params[:done]
+    redirect "/crawl/#{@bar.crawl_id}"
   end
 
 end
+
+
