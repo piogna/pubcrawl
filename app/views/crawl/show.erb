@@ -50,12 +50,13 @@ function initMap(coords) {
             lat: 43.656288,
             lng: -79.380905
         },
-        zoom: 14
+        zoom: 14,
+        scrollwheel: false
     });
     directionsRenderer.setMap(map);
     centerMap()
     var markers = []
-    <% @crawl.bars.each do |bar| %>
+    <% @crawl.bars.each_with_index do |bar, index| %>
       latLng = new google.maps.LatLng({
           lat: <%= bar.latitude %>,
           lng: <%= bar.longitude %>
@@ -63,7 +64,8 @@ function initMap(coords) {
       var marker = new google.maps.Marker({
           position: latLng,
           map: map,
-          title: '<% bar.name %>'
+          title: '<% bar.name %>',
+          icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=<%= index + 1 %>|FF0000|000000'
       })
       google.maps.event.addListener(marker, 'click', function(content) {
           return function() {
