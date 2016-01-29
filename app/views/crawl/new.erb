@@ -4,17 +4,26 @@
 <div id="map" class="col-lg-12"></div>
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-8 col-lg-offset-2">
       <h1><%= @crawl.name %></h1>
       <h3>Crawl deets: <%= @crawl.description unless @crawl.description.nil? %></h3>
+
+      <br/>
       <% if !@crawl.bars.empty? %>
-        <h3>Bars already added:</h3>
-        <% @crawl.bars.each do |bar| %>
-          <p><%= bar.name %> </p>
-          <p><%= bar.address %>, <%= bar.city %></p>
-          <br/>
-        <% end %>
+        <table class="table table-hover">
+          <th><h3>Name</h3></th>
+          <th><h3>Address</h3></th>
+          <th><h3>City</h3></th>
+          <% @crawl.bars.each do |bar| %>
+            <tr>
+              <td><h4 ><%= bar.name %></h4></td>
+              <td><h6 ><%=  bar.address %></h6></td>
+              <td><h6 ><%=  bar.city %></h6></td>
+            </tr>
+          <% end %>
+        </table>
       <% end %>
+
       <h4>Add a bar</h4>
       <form method="post" action="/crawl/<%= @crawl.id %>/add_bar">
         <div class="form-group">
