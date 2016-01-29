@@ -1,26 +1,29 @@
-<h1>Login</h1>
-<hr/>
+<div class="row">
+  <h1>Login</h1>
+  <hr/>
+</div>
 
 <% if @user.errors.any? %>
-  <div>
-    <strong>Missing some fields from your submission:</strong>
+  <div class="row">
+    <strong>Some issues with your message, please fix them:</strong>
     <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+    <% @user.errors.full_messages.each do |message| %>
+      <li class="list-group-item list-group-item-danger"><%= message %></li>
+    <% end %>
     </ul>
   </div>
 <% end %>
 
-<form action="/login" method="post">
-  <div>
-    email : <input name="email" type="text" placeholder="email" value="<%= @user.email %>">
-  </div>
-  <div>
-    password : <input name="password" type="password" placeholder="password">
-  </div>
-  <div>
-    <input class="btn btn-primary" type="submit" value="Submit">
-    <a class="btn btn-default" href="/" role="button">Home</a>
-  </div>
-</form>
+<div class="row">
+  <form action="/sessions/new" method="post">
+    <div class="form-group">
+      <label>Email:</label>
+      <input class="form-control" type="text" name="email" value="<%= @user.email %>" >
+    </div>
+    <div class="form-group">
+      <label>Password:</label>
+      <input class="form-control" type="password" name="password">
+    </div>
+      <button type="submit" class="btn btn-default">Login</button>
+  </form>
+</div>
