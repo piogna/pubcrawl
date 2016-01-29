@@ -1,0 +1,26 @@
+<h1>Login</h1>
+<hr/>
+
+<% if @user.errors.any? %>
+  <div>
+    <strong>Missing some fields from your submission:</strong>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<form action="/login" method="post">
+  <div>
+    email : <input name="email" type="text" placeholder="email" value="<%= @user.email %>">
+  </div>
+  <div>
+    password : <input name="password" type="password" placeholder="password">
+  </div>
+  <div>
+    <input class="btn btn-primary" type="submit" value="Submit">
+    <a class="btn btn-default" href="/" role="button">Home</a>
+  </div>
+</form>
