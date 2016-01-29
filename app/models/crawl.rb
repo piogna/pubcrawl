@@ -1,6 +1,7 @@
 class Crawl < ActiveRecord::Base
 
   has_many :bars
+  belongs_to :user
 
   validates :name, presence: true
 
