@@ -17,7 +17,7 @@ end
 # Homepage (Root path)
 get '/' do
   @crawls = Crawl.all.order(:name)
-  # binding.pry
+  @user = User.new
   erb :index
 end
 
