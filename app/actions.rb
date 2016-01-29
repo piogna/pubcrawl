@@ -1,3 +1,5 @@
+require_relative('./helpers/view_helpers.rb')
+
 # Homepage (Root path)
 get '/' do
   @crawls = Crawl.all.order(:name)
