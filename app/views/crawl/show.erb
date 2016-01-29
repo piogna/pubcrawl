@@ -39,6 +39,7 @@
 
     function initMap(coords) {
     var mapDiv = document.getElementById('map');
+    var infowindow = new google.maps.InfoWindow();
       map = new google.maps.Map(mapDiv, {
           center: {
               lat: 43.656288,
@@ -47,6 +48,25 @@
           zoom: 14
       });
       centerMap()
+      var markers = []
+    <% @crawl.bars.each do |bar| %>
+      latLng = new google.maps.LatLng({
+                    lat: <%= bar.latitude %>,
+                    lng: <%= bar.longitude %>
+                });
+      var marker = new google.maps.Marker({
+          position: latLng,
+          map: map,
+          title: '<% bar.name %>'
+      })
+      google.maps.event.addListener(marker, 'click', function(content) {
+        return function(){
+          infowindow.setContent(content);//set the content
+          infowindow.open(map,this);
+        }
+      }("<a href='#'><%= bar.name %></a>"));
+      markers.push(marker);
+    <% end %>
     }
 
     function centerMap() {
@@ -61,8 +81,13 @@
           geolocation.getCurrentPosition(
               function(position) {
                   latLng = new google.maps.LatLng({
+                    <% if @crawl.bars.any? %>
+                      lat: <%= @crawl.first_bar_coords[:lat] %>,
+                      lng: <%= @crawl.first_bar_coords[:lng] %>
+                    <% else %>
                       lat: position.coords.latitude,
                       lng: position.coords.longitude
+                    <% end %>
                   });
                   map.panTo(latLng);
               }
