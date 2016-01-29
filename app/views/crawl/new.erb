@@ -1,7 +1,9 @@
 <br/>
 <br/>
 <br/>
-<div id="map" class="col-lg-12"></div>
+<% if @crawl.bars.any? %>
+  <div id="map" class="col-lg-12"></div>
+<% end %>
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
@@ -71,16 +73,16 @@
       markers.push(marker);
     <% end %>
   }
-  
+
   function centerMap() {
     latLng = new google.maps.LatLng({
         lat: <%= @crawl.bars.any? ? @crawl.bars.first.latitude : 43.656288 %>,
         lng: <%= @crawl.bars.any? ? @crawl.bars.first.longitude : -79.380905 %>
     });
     map.panTo(latLng);
-  
-  
-  
+
+
+
   }
 </script>
 <% if @crawl.bars.any? %>

@@ -33,6 +33,7 @@
 
     function initMap(coords) {
     var mapDiv = document.getElementById('map');
+    var infowindow = new google.maps.InfoWindow();
       map = new google.maps.Map(mapDiv, {
           center: {
               lat: 43.656288,
@@ -41,6 +42,25 @@
           zoom: 14
       });
       centerMap()
+      var markers = []
+    <% @crawls.each do |crawl| %>
+      latLng = new google.maps.LatLng({
+                    lat: <%= crawl.first_bar_coords[:lat] %>,
+                    lng: <%= crawl.first_bar_coords[:lng] %>
+                });
+      var marker = new google.maps.Marker({
+          position: latLng,
+          map: map,
+          title: '<% crawl.name %>'
+      })
+      google.maps.event.addListener(marker, 'click', function(content) {
+        return function(){
+          infowindow.setContent(content);//set the content
+          infowindow.open(map,this);
+        }
+      }("<a href='/crawl/<%= crawl.id %>'><%= crawl.name %></a>"));
+      markers.push(marker);
+    <% end %>
     }
 
     function centerMap() {
