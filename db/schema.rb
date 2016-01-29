@@ -34,9 +34,9 @@ ActiveRecord::Schema.define(version: 20160129161022) do
   end
 
   create_table "drinks", force: :cascade do |t|
-    t.integer  "bars_id"
+    t.integer  "bar_id"
     t.string   "name"
-    t.string   "type"
+    t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

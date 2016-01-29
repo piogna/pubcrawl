@@ -1,0 +1,96 @@
+<div class="row">
+  <div id="map"></div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+      <h1><mark><%= @bar.name %></mark></h1>
+      <p><%= @bar.address %>, <%= @bar.city %></p>
+      <h4>From "<%= @bar.crawl.name %>"</h4>
+      <br>
+
+      <h4>Add a drink</h4>
+      <form method="post" action="/crawl/<%= @bar.crawl_id %>/bar/<%= @bar.id %>/add_drink">
+        <div class="form-group">
+          <label>Drink Name</label>
+          <input type="text" class="form-control" name="name" value="<%= @drink.name %>" placeholder="Drink Name">
+        </div>
+        <div class="form-group">
+          <label>Type of Drink</label>
+          <input type="text" class="form-control" name="category" value="<%= @drink.category %>" placeholder="such as: beer, wine, cocktail">
+        </div>
+        <br/>
+        <div>
+          <input class="btn btn-default" type="submit" value="Add drink!" name="add_drink">
+          <input class="btn btn-info" type="submit" value="Done" name="done">
+        </div>
+      </form>
+
+    </div>
+  </div>
+  <br><br>
+
+<script type="text/javascript">
+    var map;
+
+    function initMap(coords) {
+    var mapDiv = document.getElementById('map');
+    var infowindow = new google.maps.InfoWindow();
+      map = new google.maps.Map(mapDiv, {
+          center: {
+              lat: 43.656288,
+              lng: -79.380905
+          },
+          zoom: 14
+      });
+      centerMap()
+      var markers = []
+
+      latLng = new google.maps.LatLng({
+                    lat: <%= @bar.latitude %>,
+                    lng: <%= @bar.longitude %>
+                });
+      var marker = new google.maps.Marker({
+          position: latLng,
+          map: map,
+          title: '<% @bar.name %>'
+      })
+      google.maps.event.addListener(marker, 'click', function(content) {
+        return function(){
+          infowindow.setContent(content);//set the content
+          infowindow.open(map,this);
+        }
+      }("<a href='#'><%= @bar.name %></a>"));
+      markers.push(marker);
+
+    }
+
+    function centerMap() {
+      var geolocation = null;
+
+      if (window.navigator && window.navigator.geolocation) {
+          geolocation = window.navigator.geolocation;
+      }
+
+      if (geolocation) {
+
+          geolocation.getCurrentPosition(
+              function(position) {
+                  latLng = new google.maps.LatLng({
+                    <% if @bar %>
+                      lat: <%= @bar.latitude %>,
+                      lng: <%= @bar.longitude %>
+                    <% else %>
+                      lat: position.coords.latitude,
+                      lng: position.coords.longitude
+                    <% end %>
+                  });
+                  map.panTo(latLng);
+              }
+          );
+      }
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+
+</div>

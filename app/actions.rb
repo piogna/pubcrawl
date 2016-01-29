@@ -29,8 +29,6 @@ get '/crawl/:id/add_bar' do
 end
 
 post '/crawl/:id/add_bar' do
-  puts "something something something"
-  puts params.inspect
   @crawl = Crawl.find(params[:id])
   @bar = Bar.new(
     name:     params[:name],
@@ -48,9 +46,33 @@ end
 
 get '/crawl/:crawl_id/bar/:id' do
   @bar = Bar.find(params[:id])
+  @drink = Drink.new
 
-  erb :'crawl/drinks'
+  erb :'crawl/bar'
 end
+
+post '/crawl/:crawl_id/bar/:id/add_drink' do
+  @bar = Bar.find(params[:id])
+  @drink = Drink.new(
+    name:         params[:name],
+    category:     params[:category],
+    bar_id:       @bar.id
+  )
+  @drink.save
+  if params[:add_drink]
+    redirect "/crawl/:crawl_id/bar/#{@bar.id}"
+  elsif params[:done]
+    redirect "/crawl/#{@bar.crawl_id}"
+  end
+
+end
+
+
+
+
+
+
+
 
 
 
