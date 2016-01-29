@@ -8,14 +8,16 @@
       <br/>
       <% if !@crawl.bars.empty? %>
         <table class="table table-hover">
+          <th></th>
           <th><h3>Name</h3></th>
           <th><h3>Address</h3></th>
           <th><h3>City</h3></th>
-          <% @crawl.bars.each do |bar| %>
+          <% @crawl.bars.each_with_index do |bar, index| %>
             <tr>
-              <td><h4 ><%= bar.name %></h4></td>
-              <td><h6 ><%=  bar.address %></h6></td>
-              <td><h6 ><%=  bar.city %></h6></td>
+              <td><h4><%= "#{index + 1}. " %></h4></td>
+              <td><h4><%= bar.name %></h4></td>
+              <td><h6><%=  bar.address %></h6></td>
+              <td><h6><%=  bar.city %></h6></td>
             </tr>
           <% end %>
         </table>
