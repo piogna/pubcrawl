@@ -7,17 +7,6 @@
           <h4 class="modal-title" id="myModalLabel">Log in</h4>
         </div>
 
-        <% if @user.errors.any? %>
-          <div class="row">
-            <strong>Some issues with your message, please fix them:</strong>
-            <ul>
-            <% @user.errors.full_messages.each do |message| %>
-              <li class="list-group-item list-group-item-danger"><%= message %></li>
-            <% end %>
-            </ul>
-          </div>
-        <% end %>
-
         <div class="modal-body">
           <!-- form 'end' in separate div to move button -->
           <form action="/sessions/new" method="post">

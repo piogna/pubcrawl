@@ -66,10 +66,13 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
-            <li data-toggle="modal" data-target="#newUserModal"><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li data-toggle="modal" data-target="#logInModal"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            <li><a href="/sessions/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-            <li><a href="#">Placeholder</a></li>
+            <% unless user_authenticated? %>
+              <li data-toggle="modal" data-target="#newUserModal"><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li data-toggle="modal" data-target="#logInModal"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <% else %>
+              <li><a href="/sessions/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+              <li><a href="#">Placeholder</a></li>
+            <% end %>
           </ul>
         </div>
         <!-- /.navbar-collapse -->
