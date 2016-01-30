@@ -83,14 +83,13 @@ end
 
 get '/sessions/register' do
   @user = User.new
-  erb :'sessions/register'
+  erb :'components/login_modal'
 end
 
 post '/sessions/register' do
   @user = User.new(
     first_name: params[:first_name],
     last_name: params[:last_name],
-    # get rid of username in the database
     email: params[:email],
     password: params[:password],
     password_confirmation: params[:password_confirmation]
@@ -99,7 +98,7 @@ post '/sessions/register' do
     session["user_id"] ||= @user.id
     redirect '/'
   else
-    redirect "/sessions/register"
+    erb :'/sessions/register'
   end
 end
 
