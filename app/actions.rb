@@ -1,7 +1,7 @@
 helpers do
 
   def current_user
-    session["user_id"]
+    User.find(session[:user_id]) if session[:user_id]
   end
 
   def user_authenticated?
@@ -65,17 +65,18 @@ get '/sessions/logout' do
 end
 
 get '/sessions/new' do
-  @user = User.new
+  @user = User.find_by(email: params[:email])
   erb :'sessions/new'
 end
 
 post '/sessions/new' do
-  @user = User.find_by_email(params[:email])
+  @user = User.find_by(email: params[:email])
   if @user && @user.authenticate(params[:password])
-    session["user_id"] ||= user.id
+    session[:user_id] = @user.id
     redirect '/'
   else
-    erb :'sessions/new'
+    session.delete(:user_id)
+    redirect 'sessions/new'
   end
 end
 
