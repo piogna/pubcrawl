@@ -24,8 +24,6 @@ end
 get '/crawl/:id' do
   @crawl = Crawl.find_by(id: params[:id])
   @bars = Bar.where(crawl_id: params[:id]).order(crawl_position: :asc)
-  #could also be done with @crawl.bars.each
-  #using @bars to implement order_by crawl_position
   erb :'crawl/show'
 end
 
@@ -72,18 +70,18 @@ get '/sessions/new' do
 end
 
 post '/sessions/new' do
-  user = User.find_by_email(params[:email])
-  if user && user.authenticate(params[:password])
+  @user = User.find_by_email(params[:email])
+  if @user && @user.authenticate(params[:password])
     session["user_id"] ||= user.id
     redirect '/'
   else
-    redirect '/sessions/new'
+    erb :'sessions/new'
   end
 end
 
 get '/sessions/register' do
   @user = User.new
-  erb :'components/login_modal'
+  erb :'sessions/register'
 end
 
 post '/sessions/register' do
@@ -98,7 +96,7 @@ post '/sessions/register' do
     session["user_id"] ||= @user.id
     redirect '/'
   else
-    erb :'/sessions/register'
+    erb :'sessions/register'
   end
 end
 
@@ -124,5 +122,10 @@ post '/crawl/:crawl_id/bar/:id/add_drink' do
   end
 
 end
+
+get '/user/:id/crawls' do
+  erb :'user/crawls'
+end
+
 
 

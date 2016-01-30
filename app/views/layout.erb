@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!--
-    normalize.css removes cross-browser differences in defaults, e.g.,
-    differences in how form elements appear between Firefox and IE
-    See: http://necolas.github.com/normalize.css/
-  -->
-    <!-- <link rel="stylesheet" href="/stylesheets/normalize.css"> -->
-    <!--
-    application.css is where you put your styles
-  -->
-    <!--     <link rel="stylesheet" href="/stylesheets/application.css"> -->
-    <!-- Latest compiled and minified CSS -->
 
     <link href='https://fonts.googleapis.com/css?family=Josefin+Slab:700,600,400' rel='stylesheet' type='text/css'>
 
@@ -69,7 +58,7 @@
               <li data-toggle="modal" data-target="#logInModal"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             <% else %>
               <li><a href="/sessions/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-              <li><a href="#">Placeholder</a></li>
+              <li><a href="/user/:id/crawls"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
             <% end %>
           </ul>
         </div>

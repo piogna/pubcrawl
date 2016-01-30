@@ -6,16 +6,6 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
         </div>
-        <% if @user.errors.any? %>
-          <div class="row">
-            <strong>Some issues with your message, please fix them:</strong>
-            <ul>
-              <% @user.errors.full_messages.each do |message| %>
-                <li class="list-group-item list-group-item-danger"><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
         <div class="modal-body">
           <!-- form 'end' in footer div to move button -->
           <form action="/sessions/register" method="post">
@@ -41,7 +31,7 @@
             </div>
           </div>
             <div class="modal-footer">
-              <input type="submit" class="btn btn-info" value="Create new user">
+              <input type="submit" class="btn btn-info" value="Create New User">
           </form>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
