@@ -35,6 +35,8 @@ crawl_1.tags << tag_2
 
 crawl_1.tags << tag_3
 
+crawl_1.save
+
 crawl_2 = Crawl.create!(
   name: "Sick Crawl",
   description: "drink till you spew!"
