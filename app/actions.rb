@@ -32,6 +32,9 @@ post '/crawl/new' do
     description: params[:description],
     user_id: current_user.id
   )
+  params[:tags].each do |val|
+    @crawl.tags << Tag.find_by(id: val)
+  end
   @crawl.save
   redirect "/crawl/#{@crawl.id}/add_bar"
 end

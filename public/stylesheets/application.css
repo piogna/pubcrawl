@@ -1,59 +1,66 @@
 p {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: lighter;
-  font-size: 1em;
-  line-height: 2em;
-  color: #3c3c3c;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: lighter;
+    font-size: 1em;
+    line-height: 2em;
+    color: #3c3c3c;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Arvo', serif;
-  font-weight: 500;
-  text-transform: uppercase;
-  color: #3c3c3c;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Arvo', serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #3c3c3c;
 }
 
 nav {
-  padding-top: 5px;
+    padding-top: 5px;
 }
 
 mark {
-  line-height: 1.8em;
+    line-height: 1.8em;
 }
 
 #top-pad {
-  padding-top: 65px;
+    padding-top: 65px;
 }
 
 #map {
-  width: 100%;
-  height: 420px;
-  margin: 0 auto;
+    width: 100%;
+    height: 420px;
+    margin: 0 auto;
 }
 
 #crawl-bars {
-  display: inline-block;
+    display: inline-block;
 }
 
 #move-up {
-  margin-top: -10px;
+    margin-top: -10px;
 }
+
 
 /*.jumbotron {
   margin-top: 60px;
   padding: 0;
 }*/
 
-.table th, td {
-  text-align: center;
+.table th,
+td {
+    text-align: center;
 }
 
 .btn-info {
-  background-color: #ffffff;
+    background-color: #ffffff;
 }
 
 .wrapper {
-  padding: 50px;
+    padding: 50px;
 }
 
 .navbar {
@@ -68,8 +75,8 @@ mark {
 }
 
 .navbar-new .navbar-brand {
-  font-family: 'Arvo', serif;
-  font-size: 1.8em;
+    font-family: 'Arvo', serif;
+    font-size: 1.8em;
 }
 
 .navbar-new .navbar-brand,
@@ -112,26 +119,30 @@ mark {
 }
 
 .vertical-alignment-helper {
-    display:table;
+    display: table;
     height: 100%;
     width: 100%;
-    pointer-events:none; /* This makes sure that we can still click outside of the modal to close it */
+    pointer-events: none;
+    /* This makes sure that we can still click outside of the modal to close it */
 }
+
 .vertical-align-center {
     /* To center vertically */
     display: table-cell;
     vertical-align: middle;
-    pointer-events:none;
+    pointer-events: none;
 }
+
 .modal-content {
     /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
-    width:inherit;
-    height:inherit;
+    width: inherit;
+    height: inherit;
     /* To center horizontally */
     margin: 0 auto;
     pointer-events: all;
 }
 
+<<<<<<< HEAD
 .modal-header {
     padding:9px 15px;
     border-bottom:1px solid #eee;
@@ -152,3 +163,19 @@ mark {
   float: left;
   line-height: 34px;
 }
+=======
+.crawl-tag {
+    color: #39739d;
+    font-size: 12px;
+    white-space: nowrap;
+    background: #E1ECF4;
+    border: 1px solid #E1ECF4;
+    display: inline-block;
+    margin: 2px 2px 2px 0;
+    border-radius: 0;
+    -webkit-transition: color 0.15s ease, background 0.15s ease, border 0.15s ease;
+    -moz-transition: color 0.15s ease, background 0.15s ease, border 0.15s ease;
+    -ms-transition: color 0.15s ease, background 0.15s ease, border 0.15s ease;
+    -o-transition: color 0.15s ease, background 0.15s ease, border 0.15s ease;
+}
+>>>>>>> add_tags_to_crawls
