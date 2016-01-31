@@ -23,11 +23,17 @@
           <th><h3>Name</h3></th>
           <th><h3>Start Address</h3></th>
           <th><h3>More Info</h3></th>
+          <th><h3>Tags</h3></th>
           <% @crawls.each do |crawl| %>
             <tr>
               <td><h4><%= crawl.name %></h4></td>
               <td><p><%=  crawl.bars.first.address if crawl.bars.first %></p></td>
               <td><a href="/crawl/<%= crawl.id %>" class="btn btn-info" role="button">Details</a>
+              </td>
+              <td>
+                <% crawl.tags.each do |tag| %>
+                  <a href="#" class="crawl-tag"><%= tag.name %></a>
+                <% end %>
               </td>
             </tr>
           <% end %>

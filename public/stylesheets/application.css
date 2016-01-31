@@ -142,28 +142,27 @@ td {
     pointer-events: all;
 }
 
-<<<<<<< HEAD
-.modal-header {
-    padding:9px 15px;
-    border-bottom:1px solid #eee;
+<<<<<<< HEAD .modal-header {
+    padding: 9px 15px;
+    border-bottom: 1px solid #eee;
     background-color: #4db6ac;
     -webkit-border-top-left-radius: 5px;
     -webkit-border-top-right-radius: 5px;
     -moz-border-radius-topleft: 5px;
     -moz-border-radius-topright: 5px;
-     border-top-left-radius: 5px;
-     border-top-right-radius: 5px;
- }
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
 
- .modal-header h4 {
+.modal-header h4 {
     color: #FFF;
- }
+}
 
 #left-aligned {
-  float: left;
-  line-height: 34px;
+    float: left;
+    line-height: 34px;
 }
-=======
+
 .crawl-tag {
     color: #39739d;
     font-size: 12px;
@@ -178,4 +177,3 @@ td {
     -ms-transition: color 0.15s ease, background 0.15s ease, border 0.15s ease;
     -o-transition: color 0.15s ease, background 0.15s ease, border 0.15s ease;
 }
->>>>>>> add_tags_to_crawls
