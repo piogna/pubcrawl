@@ -14,7 +14,6 @@ helpers do
 
 end
 
-# Homepage (Root path)
 get '/' do
   @crawls = Crawl.all.order(:name)
   @user = User.new
@@ -30,7 +29,8 @@ end
 post '/crawl/new' do
   @crawl = Crawl.new(
     name: params[:name],
-    description: params[:description]
+    description: params[:description],
+    user_id: current_user.id
   )
   @crawl.save
   redirect "/crawl/#{@crawl.id}/add_bar"
@@ -125,8 +125,7 @@ post '/crawl/:crawl_id/bar/:id/add_drink' do
 end
 
 get '/user/:id/crawls' do
+  @user = current_user
+  @crawls = Crawl.where(user_id: params[:id]).order(created_at: :asc)
   erb :'user/crawls'
 end
-
-
-
