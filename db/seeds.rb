@@ -1,9 +1,39 @@
 require 'faker'
 
-crawl_1 = Crawl.create!(
+tag_1 = Tag.create(
+  name: "beer"
+)
+
+tag_2 = Tag.create(
+  name: "cocktails"
+)
+
+tag_3 = Tag.create(
+  name: "wine"
+)
+
+tag_4 = Tag.create(
+  name: "pubs"
+)
+
+tag_5 = Tag.create(
+  name: "clubs"
+)
+
+tag_6 = Tag.create(
+  name: "lounges"
+)
+
+crawl_1 = Crawl.new(
   name: "Cool Crawl",
   description: "Coolest crawl evah"
 )
+
+crawl_1.tags << tag_1
+
+crawl_1.tags << tag_2
+
+crawl_1.tags << tag_3
 
 crawl_2 = Crawl.create!(
   name: "Sick Crawl",

@@ -1,5 +1,5 @@
 class Crawl < ActiveRecord::Base
-
+  has_and_belongs_to_many :tags
   has_many :bars
   belongs_to :user
 

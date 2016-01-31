@@ -12,6 +12,9 @@
     <div class="row text-center">
       <h1><mark><%= @crawl.name %></mark></h1>
       <p><%= @crawl.description if @crawl.description %></p>
+      <% @crawl.tags.each do |tag| %>
+        <a href="#" class="crawl-tag"><%= tag.name %></a>
+      <% end %>
       <br/>
       <br/>
     </div>
